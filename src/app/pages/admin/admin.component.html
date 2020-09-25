@@ -10,6 +10,7 @@
         color="primary"
         matTooltip="Admin Panel"
         class="nav-button"
+        (click)="navigationService.navigateToElement('admin-panel')"
       >
         <mat-icon>admin_panel_settings</mat-icon>
       </button>
@@ -18,6 +19,7 @@
         class="nav-button"
         color="primary"
         matTooltip="Jobs"
+        (click)="navigationService.navigateToElement('admin-jobs')"
       >
         <mat-icon>business_center</mat-icon>
       </button>
@@ -25,3 +27,4 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <admin-panel></admin-panel>
+<admin-jobs></admin-jobs>

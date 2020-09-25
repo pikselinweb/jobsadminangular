@@ -1,0 +1,47 @@
+<mat-card class="mat-elevation-z0 action-card">
+  <mat-card-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-9 py-2">
+          <div class="job-card-content">
+            <div class="job-title">{{ job.title }}</div>
+            <div class="company">
+              <mat-icon color="primary">business</mat-icon>&nbsp;
+              {{ job.company }}
+            </div>
+            <div class="job-subs">
+              <div class="job-sub-inline">
+                <mat-icon color="primary">location_on</mat-icon>&nbsp;
+                {{ job.city }}
+              </div>
+              <div class="job-sub-inline">
+                <mat-icon color="primary">class</mat-icon>&nbsp;
+                {{ job.type }}
+              </div>
+              <div class="job-sub-inline">
+                <mat-icon color="primary">star</mat-icon>&nbsp;
+                {{ job.descriptor }}
+              </div>
+            </div>
+            <div class="job-area">
+              <span *ngFor="let area of job.area">
+                {{ area }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col py-2">
+          <div class="job-action">
+            <div class="salary">
+              <div class="price">{{ job.salary }}$</div>
+              <div class="frequence">{{ job.salary | jobFrequence }}</div>
+            </div>
+            <button mat-flat-button color="primary" class="menu-button">
+              Menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

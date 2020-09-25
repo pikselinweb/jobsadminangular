@@ -1,0 +1,55 @@
+<section #adminJobs id="admin-jobs" class="py-5">
+  <app-loading [loading]="loading$"></app-loading>
+  <div class="container py-5">
+    <div class="row aling-items-center justify-content-center">
+      <div class="col-lg-10 py-3" *ngFor="let job of jobs$ | async">
+        <job-card [job]="job"></job-card>
+      </div>
+      <div class="col-lg-10 py-3" *ngIf="pageNumber$ | async as pNumber">
+        <div class="d-flex justify-content-between pagination-buttons">
+          <button
+            mat-flat-button
+            class="mat-elevation-z5"
+            [disabled]="pNumber < 2"
+            (click)="changePage('previous', pNumber)"
+          >
+            <mat-icon>arrow_back_ios</mat-icon>
+            Previous
+          </button>
+          <button
+            mat-flat-button
+            class="mat-elevation-z5"
+            [disabled]="pNumber > 4"
+            (click)="changePage('next', pNumber)"
+          >
+            Next
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </div>
+      <!-- <div class="col-10">
+       <div
+          class="d-flex justify-content-between"
+          *ngIf="pageNumber$ | async as pageNumber"
+        >
+          <button
+            mat-flat-button
+            class="mat-elevation-z5"
+            [disabled]="pageNumber < 2"
+          >
+            <mat-icon>arrow_back_ios</mat-icon>
+            Previous
+          </button>
+          <button
+            mat-flat-button
+            class="mat-elevation-z5"
+            [disabled]="pageNumber > 4"
+          >
+            Next
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div> 
+      </div> -->
+    </div>
+  </div>
+</section>
