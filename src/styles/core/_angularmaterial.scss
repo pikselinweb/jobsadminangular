@@ -1,0 +1,18 @@
+@import "~@angular/material/theming";
+@include mat-core();
+$jobsadmin-primary: mat-palette($mat-indigo, 500);
+$jobsadmin-accent: mat-palette($mat-pink, A200, A100, A400);
+$jobsadmin-warn: mat-palette($mat-red);
+$jobsadmin-theme: mat-light-theme(
+  (
+    color: (
+      primary: $jobsadmin-primary,
+      accent: $jobsadmin-accent,
+      warn: $jobsadmin-warn,
+    ),
+  )
+);
+@include angular-material-theme($jobsadmin-theme);
+$primary-color: mat-color($jobsadmin-primary);
+$accent-color: mat-color($jobsadmin-accent);
+$warn-color: mat-color($jobsadmin-warn);

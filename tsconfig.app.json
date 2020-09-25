@@ -3,13 +3,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"],
+      "@models/*": ["src/app/models/*"]
+    },
     "types": []
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
 }
