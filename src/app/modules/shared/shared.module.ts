@@ -8,7 +8,7 @@ import { JobcardComponent } from './components/jobcard/jobcard.component';
 import { JobFrequencePipe } from './pipes/job-frequence.pipe';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FilterJobsComponent } from './components/filter-jobs/filter-jobs.component';
-
+// LAZY LOAD MODULLERDE KULLILACAK PAYLAŞTIRILMIŞ MODÜL
 @NgModule({
   declarations: [
     JobcardComponent,

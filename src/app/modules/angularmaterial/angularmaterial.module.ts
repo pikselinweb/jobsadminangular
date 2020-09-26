@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
+  // ANGULAR MATERIAL KUTUPHANESI ICIN MODUL
   declarations: [],
   imports: [CommonModule],
   exports: [

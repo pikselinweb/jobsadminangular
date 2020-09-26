@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'jobFrequence',
 })
 export class JobFrequencePipe implements PipeTransform {
+  // POSTMAN MOCK ÖZELLEŞTİRLEMEDİĞİ İÇİN RASTGELE FIYATI UYARLAMAK İÇİN PIPE
   transform(value: number): unknown {
     if (value < 50) {
       return '/hourly';

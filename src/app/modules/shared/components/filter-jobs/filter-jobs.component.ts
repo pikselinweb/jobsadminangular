@@ -16,6 +16,7 @@ import { JOB } from 'src/app/models/global';
   styleUrls: ['./filter-jobs.component.scss'],
 })
 export class FilterJobsComponent implements OnInit, OnDestroy {
+  // EĞER DETAYLI AUTO COMPLETE ISTENIYORSA ÖZELLEŞTİRME BİLEŞENİ
   @Input() jobs: Observable<JOB[]>;
   @ViewChild('resultElement', { static: false }) resultElement;
   term: string;

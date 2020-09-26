@@ -39,7 +39,6 @@ export class AdminJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadJobsAction({ pageNumber: 1 }));
-    this.jobs$.subscribe((val) => console.log(val));
   }
   changePage(operation: string, pNumber: number) {
     const newPageNumber = operation === 'next' ? pNumber + 1 : pNumber - 1;

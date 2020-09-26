@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { take } from 'rxjs/operators';
 import { JOB } from 'src/app/models/global';
 
 @Component({
@@ -13,19 +14,29 @@ export class JobeditComponent implements OnInit {
   jobForm: FormGroup;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<JobeditComponent>
+    private dialogRef: MatDialogRef<JobeditComponent>,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) {}
 
   ngOnInit(): void {
     this.loadJobForm();
   }
   saveJob() {
-    const formValue: JOB = {
-      ...this.jobForm.value,
-      area: this.stringToArray(this.jobForm.value.area),
-    };
+    this.recaptchaV3Service
+      .execute('saveJob')
+      .pipe(take(1))
+      .subscribe((token) => {
+        if (token) {
+          const formValue: JOB = {
+            ...this.jobForm.value,
+            area: this.stringToArray(this.jobForm.value.area),
+          };
 
-    this.dialogRef.close(formValue);
+          this.dialogRef.close(formValue);
+        } else {
+          alert('Please verify you are human!');
+        }
+      });
   }
   close() {
     this.dialogRef.close();
@@ -90,6 +101,7 @@ export class JobeditComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(10),
       ]),
+      // recaptchaReactive: new FormControl(null, Validators.required),
     });
   }
   getErrorMessage(form: FormGroup, fieldName: string): string {

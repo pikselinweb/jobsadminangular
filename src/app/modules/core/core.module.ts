@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { jobReducer, JobEffects } from './store';
+// TEMEL MODUL
 @NgModule({
   declarations: [],
   imports: [

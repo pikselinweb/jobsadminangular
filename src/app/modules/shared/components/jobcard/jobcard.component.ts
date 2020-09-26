@@ -7,6 +7,7 @@ import { JOB } from 'src/app/models/global';
   styleUrls: ['./jobcard.component.scss'],
 })
 export class JobcardComponent implements OnInit {
+  // İŞ KARTLARI
   @Input() job: JOB;
   @Output() showDetail = new EventEmitter<JOB>();
   @Output() editJob = new EventEmitter<JOB>();

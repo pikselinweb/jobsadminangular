@@ -13,7 +13,9 @@ export class JobEffects {
       mergeMap(({ pageNumber }) =>
         this.jobService.getjobs(pageNumber).pipe(
           map((jobs) => {
-            this.snackbar.open('Jobs loaded successfully', 'OK');
+            this.snackbar.open('Jobs loaded successfully', 'OK', {
+              duration: 2500,
+            });
             return jobActions.loadJobsActionSucced({ jobs });
           }),
           catchError((error) => of(jobActions.loadJobsActionFailed({ error })))
@@ -27,7 +29,9 @@ export class JobEffects {
       mergeMap(({ job }) =>
         this.jobService.addJob(job).pipe(
           map((newJob) => {
-            this.snackbar.open('Operation completed successfully', 'OK');
+            this.snackbar.open('Operation completed successfully', 'OK', {
+              duration: 2500,
+            });
             return jobActions.addJobsActionSucced({ job: newJob });
           }),
           catchError((error) => of(jobActions.addJobsActionFailed({ error })))
@@ -55,7 +59,9 @@ export class JobEffects {
       mergeMap(({ job }) =>
         this.jobService.deleteJob(job).pipe(
           map((dJob) => {
-            this.snackbar.open('Operation completed successfully', 'OK');
+            this.snackbar.open('Operation completed successfully', 'OK', {
+              duration: 2500,
+            });
             return jobActions.deleteJobsActionSucced({ job: dJob });
           }),
           catchError((error) =>

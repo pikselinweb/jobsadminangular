@@ -1,1 +1,2 @@
 export { JOBSTATE } from './job.state';
+// STATE MANAGAMENT İÇİN KULLANILACAK INTERFACE

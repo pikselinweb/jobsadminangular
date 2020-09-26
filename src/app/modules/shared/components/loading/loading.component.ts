@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./loading.component.scss'],
 })
 export class LoadingComponent implements OnInit {
+  // İŞLEM YAPARKEN OVERLAY İLE EKRANI KAPATAN LOADING
   @Input() loading: Observable<boolean>;
   constructor() {}
 
