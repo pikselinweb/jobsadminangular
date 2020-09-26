@@ -1,20 +1,23 @@
 <section #adminPanel id="admin-panel">
   <div class="admin-panel-wrapper">
     <div class="recentagle box-shadow"></div>
-    <div class="max-width-container container-fluid px-3">
+    <div class="max-width-container container-fluid px-5">
       <div class="row align-items-center justify-content-center">
         <div class="col-lg-5 py-3 welcome-left">
           <h1 class="main-title">Welcome to <span>admin</span> panel!</h1>
           <p class="main-description">You can add, edit or delete jobs</p>
-          <button
+
+          <a
+            href="https://github.com/pikselinweb/jobsadminangular"
             mat-flat-button
             aria-label="let's start"
             color="primary"
             class="main-button"
-            (click)="navigation.navigateToElement('admin-jobs')"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span>Let's Start</span>
-          </button>
+            <span>Open in Github</span>
+          </a>
         </div>
         <div class="col py-3 welcome-right">
           <img src="assets/images/main-screen.svg" alt="admin panel" />

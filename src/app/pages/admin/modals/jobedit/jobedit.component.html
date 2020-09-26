@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  {{ data.job.title || "Add New Job" }}
+  {{ data?.job?.title || "Add New Job" }}
 </div>
 <div mat-dialog-content>
   <form class="job-form" [formGroup]="jobForm" (ngSubmit)="saveJob()">
@@ -43,7 +43,7 @@
       <!-- PROFESSION AND Descriptor -->
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-sm-6">
+          <div class="col-sm-6 pl-0">
             <mat-form-field appearance="outline" class="d-block py-1">
               <mat-label>Projession</mat-label>
               <input
@@ -60,7 +60,7 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 pr-0">
             <mat-form-field appearance="outline" class="d-block py-1">
               <mat-label>Descriptor</mat-label>
               <input

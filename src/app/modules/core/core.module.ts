@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { jobReducer, JobEffects } from './store';
 @NgModule({
@@ -11,6 +12,7 @@ import { jobReducer, JobEffects } from './store';
   imports: [
     CommonModule,
     HttpClientModule,
+    MatSnackBarModule,
     StoreModule.forRoot({ jobs: jobReducer }),
     EffectsModule.forRoot([JobEffects]),
     StoreDevtoolsModule.instrument({

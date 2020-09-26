@@ -7,6 +7,7 @@ import { JOB } from 'src/app/models/global';
 import { JOBSTATE } from 'src/app/models/store';
 import { NavigationService } from 'src/app/modules/core/services';
 import {
+  addJobsAction,
   deleteJobsAction,
   editJobsAction,
   loadJobsAction,
@@ -58,6 +59,20 @@ export class AdminJobsComponent implements OnInit {
           this.editJob(result.job);
         } else if (result?.operation === 'delete') {
           this.deleteJob(result.job);
+        }
+      });
+  }
+  addJob() {
+    const addDialog = this.dialog.open(JobEditModal, {
+      data: { loading$: this.loading$ },
+      width: '650px',
+    });
+    addDialog
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((newData) => {
+        if (newData) {
+          this.store.dispatch(addJobsAction({ job: newData }));
         }
       });
   }

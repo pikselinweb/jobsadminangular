@@ -2,37 +2,54 @@
   <app-loading [loading]="loading$"></app-loading>
   <div class="container py-5">
     <div class="row aling-items-center justify-content-center">
-      <div class="col-lg-10 py-3" style="text-align: right">
-        <mat-form-field class="auto-form-field">
-          <mat-label>Filter</mat-label>
-          <input
-            matInput
-            placeholder="Type somethink"
-            [(ngModel)]="term"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option
-              *ngFor="let job of jobs$ | async | filter: term"
-              [value]="job.title"
-              (click)="showJobDetail(job)"
-            >
-              <div class="filter-result">
-                <div class="title">
-                  {{ job.title }}&nbsp;
-                  <span class="salary">
-                    <span class="price">{{ job.salary }}$</span>
-                    <span class="frequence">{{
-                      job.salary | jobFrequence
-                    }}</span>
-                  </span>
-                </div>
-              </div>
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <!-- select içinde button ve düğme kullanılacaksa -->
-        <!-- <filter-jobs [jobs]="jobs$"></filter-jobs> -->
+      <div class="col-lg-10 py-3">
+        <div class="container-fluid mat-elevation-z5 top-bar">
+          <div class="row align-items-center">
+            <div class="col-md-6 py-3">
+              <button
+                mat-flat-button
+                color="primary"
+                class="add-job"
+                (click)="addJob()"
+              >
+                <mat-icon color="accent">post_add</mat-icon>
+                New Job
+              </button>
+            </div>
+            <div class="col-md-6 pt-4 search-filter">
+              <mat-form-field appearance="outline" class="auto-form-field">
+                <mat-label>Filter listed jobs</mat-label>
+                <input
+                  matInput
+                  placeholder="Type somethink"
+                  [(ngModel)]="term"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let job of jobs$ | async | filter: term"
+                    [value]="job.title"
+                    (click)="showJobDetail(job)"
+                  >
+                    <div class="filter-result">
+                      <div class="title">
+                        {{ job.title }}&nbsp;
+                        <span class="salary">
+                          <span class="price">{{ job.salary }}$</span>
+                          <span class="frequence">{{
+                            job.salary | jobFrequence
+                          }}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <!-- select içinde button ve düğme kullanılacaksa -->
+              <!-- <filter-jobs [jobs]="jobs$"></filter-jobs> -->
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-10 py-3" *ngFor="let job of jobs$ | async">
         <job-card

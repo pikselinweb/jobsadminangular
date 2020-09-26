@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { JOB } from 'src/app/models/global';
-import { isBuffer } from 'util';
 
 @Component({
   selector: 'app-jobedit',
@@ -25,7 +24,7 @@ export class JobeditComponent implements OnInit {
       ...this.jobForm.value,
       area: this.stringToArray(this.jobForm.value.area),
     };
-    // console.log(formValue);
+
     this.dialogRef.close(formValue);
   }
   close() {

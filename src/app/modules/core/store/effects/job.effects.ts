@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
@@ -11,7 +12,10 @@ export class JobEffects {
       ofType(jobActions.loadJobsAction),
       mergeMap(({ pageNumber }) =>
         this.jobService.getjobs(pageNumber).pipe(
-          map((jobs) => jobActions.loadJobsActionSucced({ jobs })),
+          map((jobs) => {
+            this.snackbar.open('Jobs loaded successfully', 'OK');
+            return jobActions.loadJobsActionSucced({ jobs });
+          }),
           catchError((error) => of(jobActions.loadJobsActionFailed({ error })))
         )
       )
@@ -22,7 +26,10 @@ export class JobEffects {
       ofType(jobActions.addJobsAction),
       mergeMap(({ job }) =>
         this.jobService.addJob(job).pipe(
-          map((newJob) => jobActions.addJobsActionSucced({ job: newJob })),
+          map((newJob) => {
+            this.snackbar.open('Operation completed successfully', 'OK');
+            return jobActions.addJobsActionSucced({ job: newJob });
+          }),
           catchError((error) => of(jobActions.addJobsActionFailed({ error })))
         )
       )
@@ -33,7 +40,10 @@ export class JobEffects {
       ofType(jobActions.editJobsAction),
       mergeMap(({ job }) =>
         this.jobService.updateJob(job).pipe(
-          map((eJob) => jobActions.editJobsActionSucced({ job: eJob })),
+          map((eJob) => {
+            this.snackbar.open('Operation completed successfully', 'OK');
+            return jobActions.editJobsActionSucced({ job: eJob });
+          }),
           catchError((error) => of(jobActions.editJobsActionFailed({ error })))
         )
       )
@@ -44,7 +54,10 @@ export class JobEffects {
       ofType(jobActions.deleteJobsAction),
       mergeMap(({ job }) =>
         this.jobService.deleteJob(job).pipe(
-          map((dJob) => jobActions.deleteJobsActionSucced({ job: dJob })),
+          map((dJob) => {
+            this.snackbar.open('Operation completed successfully', 'OK');
+            return jobActions.deleteJobsActionSucced({ job: dJob });
+          }),
           catchError((error) =>
             of(jobActions.deleteJobsActionFailed({ error }))
           )
@@ -52,5 +65,9 @@ export class JobEffects {
       )
     )
   );
-  constructor(private actions$: Actions, private jobService: JobsService) {}
+  constructor(
+    private actions$: Actions,
+    private jobService: JobsService,
+    private snackbar: MatSnackBar
+  ) {}
 }
