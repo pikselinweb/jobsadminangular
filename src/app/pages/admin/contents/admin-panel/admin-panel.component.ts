@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/modules/core/services';
 
 @Component({
   selector: 'admin-panel',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-panel.component.scss'],
 })
 export class AdminPanelComponent implements OnInit {
-  constructor() {}
+  constructor(public navigation: NavigationService) {}
 
   ngOnInit(): void {}
 }

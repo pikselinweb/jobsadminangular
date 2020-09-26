@@ -36,9 +36,29 @@
               <div class="price">{{ job.salary }}$</div>
               <div class="frequence">{{ job.salary | jobFrequence }}</div>
             </div>
-            <button mat-flat-button color="primary" class="menu-button">
+            <button
+              mat-flat-button
+              color="primary"
+              class="menu-button"
+              aria-label="menu"
+              [matMenuTriggerFor]="menu"
+            >
               Menu
             </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="jobDetail(job)">
+                <mat-icon>launch</mat-icon>
+                <span>Detail</span>
+              </button>
+              <button mat-menu-item (click)="jobEdit(job)">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="jobDelete(job)">
+                <mat-icon color="warn">delete_forever</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
           </div>
         </div>
       </div>

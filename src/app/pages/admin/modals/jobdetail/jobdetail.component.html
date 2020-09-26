@@ -1,0 +1,58 @@
+<div mat-dialog-title class="job-title">
+  <span class="title">
+    {{ data.title }}
+  </span>
+  <span class="salary">
+    <div class="price">{{ data.salary }}$</div>
+    <div class="frequence">{{ data.salary | jobFrequence }}</div>
+  </span>
+</div>
+<div mat-dialog-content>
+  <div class="job-content">
+    <img class="box-shadow" [src]="data.image" [alt]="data.company" />
+    <div class="job-type py-3">
+      <span class="ia-center">
+        <mat-icon color="primary">class</mat-icon>&nbsp;
+        {{ data.type }},&nbsp;{{ data.descriptor }}
+      </span>
+    </div>
+    <div class="job-company">
+      <div class="name-city pb-2">
+        <span class="ia-center">
+          <mat-icon color="primary">business</mat-icon>&nbsp;
+          {{ data.company }}
+        </span>
+      </div>
+    </div>
+    <div class="address ia-center pb-2">
+      <mat-icon color="primary">map</mat-icon>&nbsp; {{ data.address }},&nbsp;{{
+        data.city
+      }}
+    </div>
+    <a
+      class="web ia-center pb-3"
+      [href]="data.web"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <mat-icon color="primary">link</mat-icon>&nbsp;
+      {{ data.web }}
+    </a>
+    <div class="job-area">
+      <span *ngFor="let area of data.area">
+        {{ area }}
+      </span>
+    </div>
+
+    <div class="job-description">
+      <p *ngFor="let item of repeatArray">
+        {{ data.jobDescription }}
+      </p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="a-buttons">
+  <button mat-button color="accent" (click)="closeDialog()">Close</button>
+  <button mat-button color="warn" (click)="deletejob(data)">Delete</button>
+  <button mat-button color="primary" (click)="editJob(data)">Edit</button>
+</div>

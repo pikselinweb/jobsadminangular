@@ -1,9 +1,35 @@
 .pagination-buttons {
   button {
-    min-width: 140px;
+    min-width: 100px;
     text-align: center;
     // &:first-child {
     //   text-align: left;
     // }
+  }
+}
+.auto-form-field {
+  width: 350px;
+  max-width: 100%;
+}
+.filter-result {
+  display: block;
+  .title {
+    font-size: 0.9em;
+    color: rgba($color: #000000, $alpha: 0.7);
+    display: block;
+  }
+  .company {
+    color: rgba($color: #000000, $alpha: 0.7);
+  }
+  .salary {
+    .price {
+      color: var(--dark-color);
+      font-size: 1em;
+      font-weight: 500;
+    }
+    .frequence {
+      font-size: 0.7em;
+      color: rgba($color: #000000, $alpha: 0.6);
+    }
   }
 }

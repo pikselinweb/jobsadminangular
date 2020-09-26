@@ -1,0 +1,91 @@
+.job-title {
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  padding: 15px 20px;
+  border-radius: 8px;
+  .title {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+  .salary {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: right;
+    .price {
+      font-weight: 500;
+      font-size: 1.5em;
+      color: var(--primary-color);
+    }
+    .frequence {
+      color: rgba($color: #000000, $alpha: 0.5);
+      font-size: 0.8em;
+      font-weight: 300;
+    }
+  }
+}
+.space-btw {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ia-center {
+  display: inline-flex;
+  align-items: center;
+}
+.job-content {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .job-type {
+    // font-size: 1.2em;
+    color: rgba($color: #000000, $alpha: 0.5);
+  }
+  .job-company {
+    width: 100%;
+    .name-city {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: var(--dark-color);
+    }
+  }
+  .address {
+    color: rgba($color: #000000, $alpha: 0.7);
+    font-size: 1.2em;
+  }
+  .web {
+    color: rgba($color: #000000, $alpha: 0.7);
+    text-decoration: none;
+    width: 100%;
+  }
+  .job-area {
+    padding-top: 10px;
+    display: block;
+    span {
+      padding: 10px 20px;
+      margin-right: 10px;
+      background-color: #f1f1f1;
+      border-radius: 8px;
+      color: rgba($color: #3f51b5, $alpha: 0.6);
+      display: inline-block;
+    }
+  }
+
+  .job-description {
+    padding-top: 20px;
+    font-size: 1.1em;
+    color: rgba($color: #000000, $alpha: 0.6);
+    text-align: justify;
+  }
+}
+.a-buttons {
+  width: 100%;
+  justify-content: end;
+}

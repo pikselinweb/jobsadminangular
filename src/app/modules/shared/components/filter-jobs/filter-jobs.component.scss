@@ -1,0 +1,28 @@
+.auto-form-field {
+  width: 400px;
+  max-width: 100%;
+}
+.auto-complete {
+  position: absolute;
+  background-color: white;
+  border-radius: 8px;
+  z-index: 10;
+
+  top: 50px;
+  min-height: 30px;
+  min-width: 250px;
+  max-height: 300px;
+  overflow: auto;
+  .ac-row-wrapper {
+    background-color: #fff;
+    &:nth-child(2n + 1) {
+      background-color: #f7f7f7;
+    }
+    .ac-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+    }
+  }
+}

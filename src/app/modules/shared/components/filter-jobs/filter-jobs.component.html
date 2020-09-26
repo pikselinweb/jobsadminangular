@@ -1,0 +1,42 @@
+<mat-form-field class="auto-form-field">
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    placeholder="Type somethink"
+    [(ngModel)]="term"
+    (ngModelChange)="inputChange()"
+  />
+  <div #resultElement>
+    <div class="auto-complete mat-elevation-z5" *ngIf="showResult">
+      <ng-container *ngIf="emptyResult; else haveResult">
+        <div>No result</div>
+      </ng-container>
+      <ng-template #haveResult>
+        <div
+          *ngFor="let job of jobs | async | filter: term"
+          class="ac-row-wrapper"
+        >
+          <div class="ac-row">
+            {{ job.title }}
+            <button mat-icon-button color="primary">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <!-- <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        
+        *ngFor="let job of jobs | async | filter: term"
+        [value]="job.title"
+      >
+        <div class="filter-result d-flex justify-content-between">
+          <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
+          &nbsp;
+          <span>{{ job.title }}</span>
+        </div>
+      </mat-option>
+    </mat-autocomplete> -->
+</mat-form-field>
