@@ -28,6 +28,9 @@
   }
 }
 .a-buttons {
-  width: 100%;
-  justify-content: end;
+  .a-buttons-wrapper {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }

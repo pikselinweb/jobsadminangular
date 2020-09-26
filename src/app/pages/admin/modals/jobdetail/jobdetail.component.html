@@ -52,11 +52,15 @@
   </div>
 </div>
 <div mat-dialog-actions class="a-buttons">
-  <button mat-flat-button color="accent" class="mr-2" (click)="closeDialog()">
-    Close
-  </button>
-  <button mat-flat-button color="warn" class="mr-2" (click)="deletejob(data)">
-    Delete
-  </button>
-  <button mat-flat-button color="primary" (click)="editJob(data)">Edit</button>
+  <div class="a-buttons-wrapper">
+    <button mat-flat-button color="accent" class="mr-2" (click)="closeDialog()">
+      Close
+    </button>
+    <button mat-flat-button color="warn" class="mr-2" (click)="deletejob(data)">
+      Delete
+    </button>
+    <button mat-flat-button color="primary" (click)="editJob(data)">
+      Edit
+    </button>
+  </div>
 </div>

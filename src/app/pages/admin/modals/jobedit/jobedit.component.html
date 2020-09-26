@@ -206,22 +206,24 @@
   </form>
 </div>
 <div mat-dialog-actions class="a-buttons">
-  <button
-    mat-flat-button
-    type="button"
-    color="warn"
-    class="mr-2"
-    (click)="close()"
-  >
-    Cancel
-  </button>
-  <button
-    mat-flat-button
-    type="submit"
-    color="primary"
-    (click)="saveJob()"
-    [disabled]="jobForm.invalid || !jobForm.dirty"
-  >
-    Save
-  </button>
+  <div class="a-buttons-wrapper">
+    <button
+      mat-flat-button
+      type="button"
+      color="warn"
+      class="mr-2"
+      (click)="close()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      type="submit"
+      color="primary"
+      (click)="saveJob()"
+      [disabled]="jobForm.invalid || !jobForm.dirty"
+    >
+      Save
+    </button>
+  </div>
 </div>
