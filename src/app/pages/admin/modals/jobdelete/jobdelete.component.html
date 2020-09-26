@@ -1,1 +1,19 @@
-<p>jobdelete works!</p>
+<div mat-dialog-title class="job-delete-title">
+  <span class="title"> Delete Confirmation </span>
+</div>
+<div mat-dialog-content>
+  <div class="delete-dialog">
+    <p class="del-title">
+      Your are going to <span>delete</span><br />
+      <strong>{{ data?.title }}</strong>
+    </p>
+    <p class="del-warn">This operation cannot be undone!</p>
+    <br />
+  </div>
+</div>
+<div mat-dialog-actions class="a-buttons">
+  <button mat-flat-button (click)="cancel()" class="mr-2" color="primary">
+    Cancel
+  </button>
+  <button mat-flat-button (click)="deleteJob()" color="warn">Delete</button>
+</div>

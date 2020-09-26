@@ -6,7 +6,11 @@ import { shareReplay, take } from 'rxjs/operators';
 import { JOB } from 'src/app/models/global';
 import { JOBSTATE } from 'src/app/models/store';
 import { NavigationService } from 'src/app/modules/core/services';
-import { loadJobsAction } from 'src/app/modules/core/store';
+import {
+  deleteJobsAction,
+  editJobsAction,
+  loadJobsAction,
+} from 'src/app/modules/core/store';
 import { JobDeleteModal, JobDetailModal, JobEditModal } from '../../modals';
 @Component({
   selector: 'admin-jobs',
@@ -49,15 +53,17 @@ export class AdminJobsComponent implements OnInit {
     showDialog
       .afterClosed()
       .pipe(take(1))
-      .subscribe((operation) => {
-        if (operation) {
-          console.log(operation);
+      .subscribe((result) => {
+        if (result?.operation === 'edit') {
+          this.editJob(result.job);
+        } else if (result?.operation === 'delete') {
+          this.deleteJob(result.job);
         }
       });
   }
   editJob($event) {
     const editDialog = this.dialog.open(JobEditModal, {
-      data: $event,
+      data: { job: $event, loading$: this.loading$ },
       width: '650px',
     });
     editDialog
@@ -65,7 +71,7 @@ export class AdminJobsComponent implements OnInit {
       .pipe(take(1))
       .subscribe((newData) => {
         if (newData) {
-          console.log(newData);
+          this.store.dispatch(editJobsAction({ job: newData }));
         }
       });
   }
@@ -79,7 +85,7 @@ export class AdminJobsComponent implements OnInit {
       .pipe(take(1))
       .subscribe((deletedData) => {
         if (deletedData) {
-          console.log(deletedData);
+          this.store.dispatch(deleteJobsAction({ job: deletedData }));
         }
       });
   }

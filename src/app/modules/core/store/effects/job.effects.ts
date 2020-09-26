@@ -6,7 +6,7 @@ import { JobsService } from '../../services';
 import * as jobActions from '../actions/job.action';
 @Injectable()
 export class JobEffects {
-  loadMovies$ = createEffect(() =>
+  loadJobs$ = createEffect(() =>
     this.actions$.pipe(
       ofType(jobActions.loadJobsAction),
       mergeMap(({ pageNumber }) =>
@@ -17,6 +17,40 @@ export class JobEffects {
       )
     )
   );
-
+  addJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(jobActions.addJobsAction),
+      mergeMap(({ job }) =>
+        this.jobService.addJob(job).pipe(
+          map((newJob) => jobActions.addJobsActionSucced({ job: newJob })),
+          catchError((error) => of(jobActions.addJobsActionFailed({ error })))
+        )
+      )
+    )
+  );
+  editJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(jobActions.editJobsAction),
+      mergeMap(({ job }) =>
+        this.jobService.updateJob(job).pipe(
+          map((eJob) => jobActions.editJobsActionSucced({ job: eJob })),
+          catchError((error) => of(jobActions.editJobsActionFailed({ error })))
+        )
+      )
+    )
+  );
+  deleteJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(jobActions.deleteJobsAction),
+      mergeMap(({ job }) =>
+        this.jobService.deleteJob(job).pipe(
+          map((dJob) => jobActions.deleteJobsActionSucced({ job: dJob })),
+          catchError((error) =>
+            of(jobActions.deleteJobsActionFailed({ error }))
+          )
+        )
+      )
+    )
+  );
   constructor(private actions$: Actions, private jobService: JobsService) {}
 }

@@ -1,0 +1,33 @@
+.job-delete-title {
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: rgba($color: tomato, $alpha: 0.1);
+  text-align: center;
+  .title {
+    color: var(--warn-color);
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+}
+.delete-dialog {
+  text-align: center;
+  .del-title {
+    font-size: 1.1em;
+    span {
+      color: var(--warn-color);
+    }
+    strong {
+      font-weight: 500;
+      font-size: 1.2em;
+    }
+  }
+  .del-warn {
+    font-size: 1.3em;
+    color: var(--warn-color);
+    opacity: 0.6;
+  }
+}
+.a-buttons {
+  width: 100%;
+  justify-content: end;
+}
